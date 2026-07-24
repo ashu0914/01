@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a0813, #2a081c, #0f040b);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating Music Button */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 75, 110, 0.3);
+    border: 1px solid #ff4b6e;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.music-btn.playing {
+    background: #ff4b6e;
+    box-shadow: 0 0 15px rgba(255, 75, 110, 0.8);
+}
+
+/* Background Hearts */
+.heart {
+    position: fixed;
+    color: rgba(255, 75, 110, 0.4);
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    bottom: -50px;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 75, 110, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.wide-container {
+    max-width: 850px;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #ff4b6e;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 75, 110, 0.5);
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: #ffd1dc;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.heart-icon {
+    font-size: 50px;
+    animation: pulse 1.5s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.letter-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 25px;
+    border-radius: 16px;
+    border-left: 4px solid #ff4b6e;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    color: #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff4b6e, #ff758c);
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 75, 110, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3deg) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255, 75, 110, 0.7);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+}
+
+/* ==========================================
+   MEMORY CARDS FIXED STYLING (For gallery.html)
+   ========================================== */
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.memory-card {
+    height: 220px;
+    background: linear-gradient(135deg, #ff4b6e, #8a2387);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.6s ease, background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-front {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-align: center;
+}
+
+.card-back {
+    display: none;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #ffd1dc;
+    text-align: left;
+    padding: 5px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.memory-card.flipped {
+    background: #2a081c;
+    border: 2px solid #ff4b6e;
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .card-front {
+    display: none;
+}
+
+.memory-card.flipped .card-back {
+    display: block;
+    transform: rotateY(180deg);
+}
+
+/* Custom Scrollbar inside Memory Cards */
+.card-back::-webkit-scrollbar {
+    width: 4px;
+}
+.card-back::-webkit-scrollbar-thumb {
+    background: #ff4b6e;
+    border-radius: 10px;
+}
+
+/* ==========================================
+   GAMES STYLING
+   ========================================== */
+
+.game-card {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 182, 193, 0.1);
+}
+
+.game-card h2 {
+    font-size: 1.2rem;
+    color: #ff758c;
+    margin-bottom: 8px;
+}
+
+.game-area {
+    height: 140px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    position: relative;
+    margin: 15px 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clickable-heart {
+    position: absolute;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.game-stats {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ffd1dc;
+}
+
+.choice-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    min-height: 50px;
+}
+
+.coupon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.coupon {
+    background: linear-gradient(135deg, #ff4b6e, #8a2387);
+    padding: 20px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.coupon.revealed {
+    background: #2a081c;
+    border: 2px solid #ff4b6e;
+    color: #ffd1dc;
+}
+
+.game-input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ff758c;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    text-align: center;
+}
+
+.compliment-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    font-style: italic;
+    color: #ffd1dc;
+    border: 1px dashed rgba(255, 117, 140, 0.5);
+    line-height: 1.6;
+}
+
+.success-text { color: #4eff91; font-weight: 600; margin-top: 12px; }
+.error-text { color: #ff4b6e; font-weight: 600; margin-top: 12px; }
